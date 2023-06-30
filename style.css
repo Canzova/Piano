@@ -1,0 +1,202 @@
+/* Import Google font - Poppins */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0 10px;
+    background: #e3f2fd;
+}
+
+.wrapper {
+    /* width: 780px; */
+    border-radius: 20px;
+    padding: 25px 40px;
+    background-color: black;
+}
+
+.wrapper header {
+    color: #b2b2b2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+header h2 {
+    font-size: 1.6rem;
+}
+
+header .column {
+    display: flex;
+    align-items: center;
+}
+
+header .column span {
+    font-weight: 500;
+    margin-right: 15px;
+    font-size: 1.19rem;
+}
+
+.volume-slider input {
+    accent-color: #fff;
+    outline: none;
+}
+
+.keys-checkbox input {
+    width: 60px;
+    height: 30px;
+
+    /* Certainly! "appearance: none;" is a code used in web design to remove the default look of buttons and other form elements. It allows you to make your own custom styles for these elements using CSS (a language for styling web pages). By using "appearance: none;", you start with a blank canvas and can design the element however you want. It gives you the freedom to choose colors, borders, and other visual aspects of the element.  */
+
+    appearance: none;
+    position: relative;
+    border-radius: 30px;
+    background-color: #4b4b4b;
+    outline: none;
+}
+
+.keys-checkbox input::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    border-radius: inherit;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    background: #8c8c8c;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Whne the input field will be chececked the below code will be applied to its before pseudo selector */
+.keys-checkbox input:checked::before {
+    left: 35px;
+    background: #fff;
+}
+
+.piano-keys .key {
+    list-style: none;
+    color: #a2a2a2;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+}
+
+.piano-keys {
+    display: flex;
+    margin-top: 40px;
+    text-transform: uppercase;
+}
+
+.piano-keys .white {
+    width: 70px;
+    height: 230px;
+    background: linear-gradient(#fff 96%, #eee 4%);
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+
+/* In CSS, ":active" is a pseudo-class selector that is used to target an element when it is being actively interacted with by a user. It represents the moment when the element is in an active state, typically while it is being clicked or touched. */
+
+/* Here wec are using class active because of js */
+
+.piano-keys .white.active {
+
+    /* In the CSS code snippet "box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);", the term "inset" is a keyword that is used to specify that the box shadow should be applied inside the element rather than outside of it.
+
+    When you use "inset" in the box-shadow property, it creates a shadow effect that appears inside the element, giving it a sunken or pressed appearance. This can be used to create depth or simulate the element being pushed inwards.
+
+    The values that follow the "inset" keyword define the offset, blur radius, and color of the box shadow. In this particular example, the values are "-5px" for the horizontal offset, "5px" for the vertical offset, "20px" for the blur radius, and "rgba(0, 0, 0, 0.2)" for the shadow color. */
+
+
+    /* Horizontal Offset: It determines how far the shadow is placed from the element in the left or right direction. A positive value moves the shadow to the right, while a negative value moves it to the left.
+
+    Vertical Offset: It determines how far the shadow is placed from the element in the up or down direction. A positive value moves the shadow downward, while a negative value moves it upward. */
+
+    box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
+
+    /* In the CSS code snippet "background: linear-gradient(to bottom, #fff 0%, #eee 100%);", the phrase "to bottom" is a gradient direction value that specifies the direction in which the gradient should be applied.
+
+    In this case, "to bottom" indicates that the gradient should start at the top of the element and smoothly transition to the bottom. The colors will gradually change from the specified starting color (#fff, which represents pure white) to the ending color (#eee, which represents a slightly darker shade of white) in a vertical manner. */
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+}
+
+.piano-keys .black {
+    width: 44px;
+    height: 140px;
+    z-index: 2;
+    /* Top Bottom Left and Right */
+    border-radius: 0 0 5px 5px;
+    margin: 0 -22px 0 -22px;
+    background: linear-gradient(#333, #000);
+}
+
+.piano-keys .black.active {
+    box-shadow: inset -5px -10px 10px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(to bottom, #000, #434343);
+}
+
+.piano-keys span {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    font-size: 1.13rem;
+    text-align: center;
+}
+
+.piano-keys .key.hide span{
+    display: none;
+}
+
+@media screen and (max-width: 815px) {
+    .wrapper {
+      padding: 25px;
+    }
+    header {
+      flex-direction: column;
+    }
+    header :where(h2, .column) {
+      margin-bottom: 13px;
+    }
+    .volume-slider input {
+      max-width: 100px;
+    }
+    .piano-keys {
+      margin-top: 20px;
+    }
+    .piano-keys .key:where(:nth-child(9), :nth-child(10)) {
+      display: none;
+    }
+    .piano-keys .black {
+      height: 100px;
+      width: 40px;
+      margin: 0 -20px 0 -20px;
+    }
+    .piano-keys .white {
+      height: 180px;
+      width: 60px;
+    }
+  }
+  @media screen and (max-width: 615px) {
+    .piano-keys .key:nth-child(13),
+    .piano-keys .key:nth-child(14),
+    .piano-keys .key:nth-child(15),
+    .piano-keys .key:nth-child(16),
+    .piano-keys .key :nth-child(17) {
+      display: none;
+    }
+    .piano-keys .white {
+      width: 50px;
+    }
+  }
